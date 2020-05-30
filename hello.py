@@ -9,7 +9,7 @@ app = Flask(__name__)
 def hello():
     """ hello function """
 
-    print (request.headers)
+    print(request.headers)
 
     return "Hello World!"
 
