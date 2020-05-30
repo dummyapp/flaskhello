@@ -1,0 +1,6 @@
+Dockerfile*
+*.pyc
+*.md
+*.yaml
+jenkinsfile
+setupjenkins
