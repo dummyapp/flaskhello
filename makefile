@@ -4,7 +4,7 @@ setup-jenkins:
 	cd setupjenkins; docker-compose build; docker-compose up -d;
 
 compile-app:
-	docker build --target builder -t flaskhello:latest . && docker rmi flaskhello:latest && echo "Code successfully compiled!!" || echo  "Code have compilation issue" && exit 1
+	docker build --target builder -t flaskhello:latest . && docker rmi flaskhello:latest && echo "Code successfully compiled!!" || (echo  "Code have compilation issue"; exit 1)
 
 build-app:
 	docker-compose build
