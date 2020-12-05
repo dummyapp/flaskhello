@@ -1,1 +1,3 @@
 flask
+uwsgi
+gunicorn==20.0.4

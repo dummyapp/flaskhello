@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web-gu:
+    build: 
+      context: .
+      dockerfile: Dockerfile.gunicorn 
+    image: flaskhello-guni
+    environment:
+     - GUNICORN_CMD_ARGS="--bind="${FLASK_RUN_HOST}:${FLASK_RUN_PORT} 
+    ports:
+      - "${FLASK_RUN_PORT}:${FLASK_RUN_PORT}"
