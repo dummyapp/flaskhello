@@ -5,21 +5,27 @@ pipeline {
   }
   agent any  
     stages {
+	stage('Checkout Code') {
+            steps{
+		    ws("/jenkins_home/workspace/$JOB_NAME") {
+                      	    git 'https://github.com/dummyapp/flaskhello.git'
+                    }
+                }
+        }
         stage('Run Lint') {
             parallel {
                 stage('Lint Check Python Code') {
                     steps{
-                        ws("/jenkins_home/workspace/$JOB_NAME") {
                             git 'https://github.com/dummyapp/flaskhello.git'
                             script {
                                 sh "echo The job name is: $JOB_NAME"
                                 sh "docker run --rm -v ${ABSOLUTE_WORKSPACE}${WORKSPACE}/hello.py:/code/hello.py pylint:test"
                             }
-                        }
                     }
                 }
                 stage('Lint Check Dockerfile') {
                     steps{
+			git 'https://github.com/dummyapp/flaskhello.git'
                         script {
                             sh "docker run --rm -i hadolint/hadolint < ./Dockerfile.uwsgi"
                         }
