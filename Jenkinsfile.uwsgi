@@ -1,6 +1,6 @@
 pipeline {  
   environment {
-    registry = "saurabhvaj13/flaskhello"
+    registry = "saurabhvaj13/flaskhello-uwsgi"
     registryCredential = 'saurabhDockerHub'
   }
   agent any  
