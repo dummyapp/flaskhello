@@ -1,7 +1,9 @@
-compile-app:
-	docker build --target builder -t flaskhello:latest . && docker rmi flaskhello:latest && echo "Code successfully compiled!!" || (echo  "Code have compilation issue"; exit 1)
+DOCKERFILE ?= "Dockerfile"
 
-## Local targets 
+compile-app:
+	docker build --target builder -f ${DOCKERFILE} -t flaskhello:latest . && docker rmi flaskhello:latest && echo "Code successfully compiled!!" || (echo  "Code have compilation issue"; exit 1)
+
+# Local targets 
 local-build-app:
 	docker-compose build
 local-run-app:
