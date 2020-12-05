@@ -21,8 +21,8 @@ COPY nginx.conf /etc/nginx
 COPY uwsgi.ini /app
 COPY start.sh /app
 
-COPY requirements.txt /app
-RUN pip install -r requirements.txt
+COPY requirements-uwsgi.txt /app
+RUN pip install -r requirements-uwsgi.txt
 
 COPY --from=builder /app/hello.pyc .
 
